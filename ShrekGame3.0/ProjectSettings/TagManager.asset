@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BG
+    uniqueID: 1044950233
+    locked: 0
+  - name: Player
+    uniqueID: 2433307513
+    locked: 0
+  - name: FG
+    uniqueID: 185693577
+    locked: 0
