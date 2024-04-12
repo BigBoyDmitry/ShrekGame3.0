@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Teleport : MonoBehaviour
+public class Teleport : Sound
 {
     public GameObject spawnPoint;
 
@@ -11,6 +11,7 @@ public class Teleport : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             collision.gameObject.transform.position = spawnPoint.gameObject .transform.position;
+            PlaySound(sounds[0]);
         }
     }
 

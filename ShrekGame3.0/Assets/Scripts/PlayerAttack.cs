@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttack : Sound
 {
     private float timeBtwAttack;
     public float startTimeBtwAttack;
@@ -23,6 +23,7 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            PlaySound(sounds[0]);
             AttackDamage(mousePos);
             // Запускаем анимацию удара
             anim.SetTrigger("attack");  // Предположим, что в аниматоре есть параметр с именем "Attack" для запуска анимации

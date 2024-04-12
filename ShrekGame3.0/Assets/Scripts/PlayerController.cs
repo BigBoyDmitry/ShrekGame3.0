@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Sound
 {
     public float speed;
     public float jumpForce;
@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
         {
             rb.velocity = Vector2.up * jumpForce;
+            PlaySound(sounds[0]);
             anim.SetTrigger("takeOf");
         }
         if (isGrounded == true)
