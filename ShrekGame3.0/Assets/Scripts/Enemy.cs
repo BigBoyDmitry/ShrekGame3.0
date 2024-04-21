@@ -17,6 +17,8 @@ public class Enemy : Sound
     private PlayerController player;
     private Animator anim;
 
+
+
     private void Start()
     {
         anim = GetComponent<Animator>();
