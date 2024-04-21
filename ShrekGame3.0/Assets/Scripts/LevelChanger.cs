@@ -24,5 +24,9 @@ public class LevelChanger : MonoBehaviour
         playerStorage.initialValue = position;
         SceneManager.LoadScene(levelToLoad);
     }
+    public void DontDestroyOnLoad()
+    {
+
+    }
 
 }

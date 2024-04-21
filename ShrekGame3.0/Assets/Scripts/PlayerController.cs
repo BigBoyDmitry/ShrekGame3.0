@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : Sound
 {
     public float speed;
     public float jumpForce;
     public float moveInput;
+    public float health;
+    public int numOfHearts;
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
 
     private Rigidbody2D rb;
 
@@ -18,6 +25,7 @@ public class PlayerController : Sound
     public float checkRadius;
     public LayerMask whatIsGround;
     public VectorValue pos;
+    public float heal;
 
     private Animator anim;
 
@@ -31,6 +39,35 @@ public class PlayerController : Sound
 
     private void FixedUpdate()
     {
+        if(health > numOfHearts)
+        {
+            health = numOfHearts;
+        }
+        health += Time.deltaTime * heal;
+        for(int i = 0; i < numOfHearts; i++)
+        {
+            if(i < Mathf.RoundToInt(health))
+            {
+                hearts[i].sprite = fullHeart;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+            if(i < numOfHearts)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+            if(health < 1)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+        }
+
         moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
         if (facingRight == false && moveInput > 0)
